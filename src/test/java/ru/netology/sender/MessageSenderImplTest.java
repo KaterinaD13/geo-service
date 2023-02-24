@@ -1,3 +1,5 @@
+package ru.netology.sender;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -7,7 +9,6 @@ import ru.netology.geo.GeoService;
 import ru.netology.geo.GeoServiceImpl;
 import ru.netology.i18n.LocalizationService;
 import ru.netology.i18n.LocalizationServiceImpl;
-import ru.netology.sender.MessageSenderImpl;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -17,7 +18,7 @@ public class MessageSenderImplTest {
     void sendWithRuTest() {
         GeoService geoService = Mockito.mock(GeoServiceImpl.class);
         Mockito.when(geoService.byIp(Mockito.startsWith("172.")))
-                .thenReturn(new Location("Moscow",Country.RUSSIA, null, 0));
+                .thenReturn(new Location("Moscow", Country.RUSSIA, null, 0));
         LocalizationService localizationService = Mockito.mock(LocalizationServiceImpl.class);
         Mockito.when(localizationService.locale(Country.RUSSIA))
                 .thenReturn("Добро пожаловать");
@@ -33,7 +34,7 @@ public class MessageSenderImplTest {
     void sendWithEngTest() {
         GeoService geoService = Mockito.mock(GeoServiceImpl.class);
         Mockito.when(geoService.byIp(Mockito.startsWith("96.")))
-                .thenReturn(new Location("New York", Country.USA, null,  0));
+                .thenReturn(new Location("New York", Country.USA, null, 0));
         LocalizationService localizationService = Mockito.mock(LocalizationServiceImpl.class);
         Mockito.when(localizationService.locale(Country.USA))
                 .thenReturn("Welcome");
